@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hej-deployment
+  labels:
+  tier: frontend
+spec:
+  selector:
+    matchlabels:
+      tier: frontend
+  replicas: 4
+  template:
+    metadata:
+      name: hej-pod
+      labels:
+        tier: frontend
+    spec: 
+      containers:
+        - name: hello-world
+          image: hello-world
