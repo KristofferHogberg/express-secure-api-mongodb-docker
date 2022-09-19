@@ -1,1 +1,3 @@
-export const DB = 'mongodb://mongo:27017/booksDb';
+module.exports = {
+    DB: 'mongodb://mongo:27017/booksDb'
+}
