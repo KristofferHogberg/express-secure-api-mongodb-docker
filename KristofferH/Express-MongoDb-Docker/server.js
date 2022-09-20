@@ -11,20 +11,11 @@ const PORT = 3005;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-// add router in the Express app.
+// Add router in the Express app.
 app.use("/", router);
 
-// Connect to DB with mongoose
-mongoose.connect(config.DB, function (err, db) {
-  if (err) {
-    console.log("database is not connected");
-  } else {
-    console.log("connected!!");
-  }
-});
-
 router.get("/", function (req, res) {
-  res.sendfile("index.html");
+  res.sendFile(__dirname + '/index.html');
 });
 
 router.post("/login", function (req, res) {
@@ -34,6 +25,14 @@ router.post("/login", function (req, res) {
   res.end("yes");
 });
 
+// Connect to DB with mongoose
+mongoose.connect(config.DB, function (err, db) {
+  if (err) {
+    console.log("database is not connected");
+  } else {
+    console.log("connected!!");
+  }
+});
 /* app.get("/", function (req, res) {
   res.json({ title: "Ninjas from Space II" });
 }); */
