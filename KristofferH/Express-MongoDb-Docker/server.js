@@ -25,17 +25,41 @@ router.post("/login", function (req, res) {
   res.end("yes");
 });
 
-// Connect to DB with mongoose
-mongoose.connect(config.DB, function (err, db) {
+ mongoose.connect(config.DB, {
+  useNewUrlParser:true,
+  useUnifiedTopology:true
+}, function (err, db) {
+  
   if (err) {
     console.log("database is not connected");
   } else {
     console.log("connected!!");
   }
 });
-/* app.get("/", function (req, res) {
-  res.json({ title: "Ninjas from Space II" });
-}); */
+
+// Schema
+const sch={
+  title:String,
+  author:String,
+  id:Number
+}
+const monmodel=mongoose.model("NEWCOL", sch);
+
+// Post to db
+app.post("/post", async(req, res) => {
+  console.log('inside post function...');
+
+  const data = new monmodel({
+    title:req.body.title,
+    author:req.body.author,
+    id:req.body.id
+  });
+
+  // Save json-object and return to client
+  const val = await data.save();
+  res.json(val);
+
+})
 
 app.listen(PORT, function () {
   console.log("Your node js server is running on PORT:", PORT);
