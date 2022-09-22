@@ -8,13 +8,7 @@ This document assumes you already have a Github account and that you know the ba
 
 Go to [https://github.com/settings/tokens](https://github.com/settings/tokens) or manually: 
 
-**Settings (**top right corner on profile**) **> **Developer Settings** > **Personal access tokens**
-
-                                  
-
->>                                                            >>
-
-
+**Settings** (top right corner on profile) > **Developer Settings** > **Personal access tokens**
 
 
 
