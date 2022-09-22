@@ -2,6 +2,8 @@
 
 **Preface:**
 
+Link to Google Doc with pictures: https://docs.google.com/document/d/1Vzcke6PAth3agzGir2qv-UjlLQeeI5rbZdOpAl31dHU/edit?usp=sharing
+
 This document assumes you already have a Github account and that you know the basics of Docker commands. You also need to have a working image and a Red Hat Openshift sandbox account.
 
 **Step 1: Generate a Github Personal Access Token (PAT):**
