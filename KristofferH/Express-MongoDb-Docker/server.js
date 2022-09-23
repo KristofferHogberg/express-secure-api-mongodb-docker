@@ -1,8 +1,6 @@
 // Setup the server
 const express = require("express");
 const bodyParser = require("body-parser");
-const router = express.Router();
-
 const app = express();
 const mongoose = require("mongoose");
 
@@ -12,20 +10,7 @@ const PORT = 3005;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-// Add router in the Express app.
-app.use("/", router);
-
-/* router.get("/", function (req, res) {
-  res.sendFile(__dirname + "/index.html");
-});
-
-router.post("/login", function (req, res) {
-  var user_name = req.body.user;
-  var password = req.body.password;
-  console.log("User name = " + user_name + ", password is " + password);
-  res.end("yes");
-}); */
-
+// Connect to MongoDb
 mongoose.connect(
   config.DB,
   {
@@ -41,40 +26,56 @@ mongoose.connect(
   }
 );
 
-// Schema
-const sch = {
+// Create a Schema 
+const schemaBook = {
   title: String,
   author: String,
-  id: Number,
+  yearOfRelease: String
 };
-const monmodel = mongoose.model("NEWCOL", sch);
 
-// get all from collection
-router.route("/find").get(function(req, res) {
-  monmodel.find({}, function(err, result) {
-    if (err) {
-      console.log(err);
-    } else {
-      res.json(result);
-    }
-  });
-});
+// Create a model
+const Book = mongoose.model("Books", schemaBook);
 
-// Post to db
-app.post("/post", async (req, res) => {
+// Define CRUD endpoints
+app.get('/listallbooks', (req, res) => {
+  Book.find((err, books) => {
+    res.json(books)
+  })
+})
+
+app.get('/listbook/:id', (req, res) => {
+  Book.findById(req.params.id, (err, books) => {
+    res.json(books)
+  })
+})
+
+app.post("/createbook", async (req, res) => {
   console.log("inside post function...");
 
-  const data = new monmodel({
+  const book = new Book({
     title: req.body.title,
     author: req.body.author,
-    id: req.body.id,
-  });
+    yearOfRelease: req.body.yearOfRelease
+  })
 
-  // Save json-object and return to client
-  const val = await data.save();
-  res.json(val);
-});
+  book.save((err) => {
+    res.json(book)
+  })
+})
 
+app.put('/updatebook/:id', (req, res) => {
+  Book.findByIdAndUpdate(req.params.id, req.body, (err) => {
+    res.json( {message: `updating book ${req.params.id}`} )
+  })
+})
+
+app.delete('/deletebook/:id', (req, res) => {
+  Book.findByIdAndDelete(req.params.id, (err) => {
+    res.json( {message: `deleting book ${req.params.id}` })
+  })
+})
+
+// Set up port to listen to
 app.listen(PORT, function () {
   console.log("Your node js server is running on PORT:", PORT);
 });
