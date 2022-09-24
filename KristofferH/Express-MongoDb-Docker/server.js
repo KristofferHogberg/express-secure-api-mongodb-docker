@@ -4,6 +4,10 @@ const bodyParser = require("body-parser");
 const app = express();
 const mongoose = require("mongoose");
 
+// Import JWT middle-ware
+const jwt = require('express-jwt');
+const jwksRsa = require('jwks-rsa');
+
 const config = require("./db");
 const PORT = 3005;
 
@@ -25,6 +29,26 @@ mongoose.connect(
     }
   }
 );
+
+var jwtCheck = jwt({
+  secret: jwks.expressJwtSecret({
+      cache: true,
+      rateLimit: true,
+      jwksRequestsPerMinute: 5,
+      jwksUri: 'https://dev-qfuag1j4.eu.auth0.com/.well-known/jwks.json'
+}),
+
+audience: 'https://auth-demo',
+issuer: 'https://dev-qfuag1j4.eu.auth0.com/',
+algorithms: ['RS256']
+});
+
+
+/* app.get('/authorized', function (req, res) {
+    res.send('Secured Resource');
+}); */
+
+
 
 // Create a Schema 
 const schemaBook = {
@@ -48,6 +72,8 @@ app.get('/listbook/:id', (req, res) => {
     res.json(books)
   })
 })
+
+app.use(jwtCheck);
 
 app.post("/createbook", async (req, res) => {
   console.log("inside post function...");
