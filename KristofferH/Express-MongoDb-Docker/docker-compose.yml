@@ -6,6 +6,8 @@ services:
     build: .
     ports:
       - "3005:3005"
+    volumes:
+      - .:/app
     links:
       - mongo
   mongo:
