@@ -14,7 +14,10 @@ services:
     container_name: mongo
     image: mongo
     command: ["--bind_ip_all"]
-    volumes:
-    - ./data:/data/db
     ports:
       - "27017:27017"
+
+    
+
+  
+    

@@ -5,10 +5,6 @@ const app = express();
 const mongoose = require("mongoose");
 const path = require('path');
 
-// Import JWT middle-ware
-//const { expressjwt: expressJwt } = require('express-jwt');
-//var jwks = require('jwks-rsa');
-
 const jwt = require('jsonwebtoken');
 
 const config = require("./db");
@@ -33,27 +29,6 @@ mongoose.connect(
   }
 );
 
-// Add jwt check function for using auth0
-/* var jwtCheck = expressJwt({
-  secret: jwks.expressJwtSecret({
-      cache: true,
-      rateLimit: true,
-      jwksRequestsPerMinute: 5,
-      jwksUri: 'https://dev-qfuag1j4.eu.auth0.com/.well-known/jwks.json'
-}),
-audience: 'https://auth-demo',
-issuer: 'https://dev-qfuag1j4.eu.auth0.com/',
-algorithms: ['RS256']
-});
-
-const options = { 
-  method: "GET",
-  url: "http://192.168.1.121:3005/listallbooks",
-  headers: { "authorization": "Bearer TOKEN" },
-}; */
-// Implement auth0
-//app.use(jwtCheck);
-
 // Create schema for collection
 const schemaBook = {
   title: String,
@@ -69,8 +44,6 @@ app.post('/api/v1/login', (req, res) => {
 
   const user = {
     id:Date.now(),
-  /*   userEmail:"test@test.se",
-    password:"123" */
     userEmail: req.body.userEmail,
     password: req.body.password
   }
@@ -130,7 +103,6 @@ app.get('/api/v1/listbook/:id', (req, res) => {
     res.json(books)
   })
 })
-
 
 app.post("/api/v1/createbook", async (req, res) => {
   console.log("inside post function...");
