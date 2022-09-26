@@ -4,6 +4,8 @@ const bodyParser = require("body-parser");
 const app = express();
 const mongoose = require("mongoose");
 
+const { verifyToken } = require('./middleware')
+
 const jwt = require("jsonwebtoken");
 const path = require("path");
 
@@ -41,7 +43,7 @@ const schemaBook = {
 const Book = mongoose.model("Books", schemaBook);
 
   // Implement middleware-function for verifying token
-  function verifyToken(req, res, next) {
+/*   function verifyToken(req, res, next) {
     const bearerHeader = req.headers["authorization"];
     if (typeof bearerHeader !== "undefined") {
       const bearer = bearerHeader.split(" ");
@@ -52,7 +54,7 @@ const Book = mongoose.model("Books", schemaBook);
       res.sendStatus(403);
     }
   }
-  
+   */
 // Define endpoint for index.html
 app.get("/api/v1/home", (req, res) => {
   res.sendFile(path.join(__dirname, "/index.html"));
