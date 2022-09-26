@@ -40,7 +40,6 @@ const schemaBook = {
 // Create a model
 const Book = mongoose.model("Books", schemaBook);
 
-
   // Implement middleware-function for verifying token
   function verifyToken(req, res, next) {
     const bearerHeader = req.headers["authorization"];
