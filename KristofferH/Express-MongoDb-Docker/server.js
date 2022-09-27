@@ -1,17 +1,20 @@
-// Setup the server
+// Set up the server
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
 const mongoose = require("mongoose");
-const path = require("path");
+
+const { verifyToken } = require('./middleware')
 
 const jwt = require("jsonwebtoken");
+const path = require("path");
 
 const config = require("./db");
 const PORT = 3005;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
 
 // Connect to MongoDb
 mongoose.connect(
@@ -39,6 +42,19 @@ const schemaBook = {
 // Create a model
 const Book = mongoose.model("Books", schemaBook);
 
+  // Implement middleware-function for verifying token
+/*   function verifyToken(req, res, next) {
+    const bearerHeader = req.headers["authorization"];
+    if (typeof bearerHeader !== "undefined") {
+      const bearer = bearerHeader.split(" ");
+      const bearerToken = bearer[1];
+      req.token = bearerToken;
+      next();
+    } else {
+      res.sendStatus(403);
+    }
+  }
+   */
 // Define endpoint for index.html
 app.get("/api/v1/home", (req, res) => {
   res.sendFile(path.join(__dirname, "/index.html"));
@@ -72,19 +88,6 @@ app.get("/api/v1/profile", verifyToken, (req, res) => {
     }
   });
 });
-
-// Implement middleware-function for verifying token
-function verifyToken(req, res, next) {
-  const bearerHeader = req.headers["authorization"];
-  if (typeof bearerHeader !== "undefined") {
-    const bearer = bearerHeader.split(" ");
-    const bearerToken = bearer[1];
-    req.token = bearerToken;
-    next();
-  } else {
-    res.sendStatus(403);
-  }
-}
 
 // Define CRUD endpoints
 app.get("/api/v1/listallbooks", verifyToken, (req, res) => {

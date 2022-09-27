@@ -89,7 +89,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxNjY0MTIxNjY3MDYxLCJ1c2VyRW1haWwiOiJhZG1pbkBib29rcy5zZSIsInBhc3N3b3JkIjoiYWRtaW4xOTgyIn0sImlhdCI6MTY2NDEyMTY2N30.BImhj6td1sCPfIMJfFu5YT6HwrhpXd1NXCqeTNVvf2g",
+						"value": "Bearer ",
 						"type": "text"
 					}
 				],
@@ -139,7 +139,7 @@
 					},
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxNjY0MTIxNjY3MDYxLCJ1c2VyRW1haWwiOiJhZG1pbkBib29rcy5zZSIsInBhc3N3b3JkIjoiYWRtaW4xOTgyIn0sImlhdCI6MTY2NDEyMTY2N30.BImhj6td1sCPfIMJfFu5YT6HwrhpXd1NXCqeTNVvf2g",
+						"value": "Bearer ",
 						"type": "text"
 					}
 				],
@@ -218,7 +218,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxNjY0MTIxNjY3MDYxLCJ1c2VyRW1haWwiOiJhZG1pbkBib29rcy5zZSIsInBhc3N3b3JkIjoiYWRtaW4xOTgyIn0sImlhdCI6MTY2NDEyMTY2N30.BImhj6td1sCPfIMJfFu5YT6HwrhpXd1NXCqeTNVvf2g",
+						"value": "Bearer ",
 						"type": "text"
 					}
 				],
@@ -257,7 +257,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxNjY0MTIxNjY3MDYxLCJ1c2VyRW1haWwiOiJhZG1pbkBib29rcy5zZSIsInBhc3N3b3JkIjoiYWRtaW4xOTgyIn0sImlhdCI6MTY2NDEyMTY2N30.BImhj6td1sCPfIMJfFu5YT6HwrhpXd1NXCqeTNVvf2g",
+						"value": "Bearer ",
 						"type": "text"
 					}
 				],
@@ -297,7 +297,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxNjY0MTIxNjY3MDYxLCJ1c2VyRW1haWwiOiJhZG1pbkBib29rcy5zZSIsInBhc3N3b3JkIjoiYWRtaW4xOTgyIn0sImlhdCI6MTY2NDEyMTY2N30.BImhj6td1sCPfIMJfFu5YT6HwrhpXd1NXCqeTNVvf2g",
+						"value": "Bearer ",
 						"type": "text"
 					}
 				],
