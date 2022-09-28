@@ -25,7 +25,7 @@ router.post("/api/v1/login", (req, res) => {
 });
 
 // Define login endpoint
-router.get("/api/v1/profile", Ö, (req, res) => {
+router.get("/api/v1/profile", verifyToken, (req, res) => {
   jwt.verify(req.token, "secretKey", (err, authData) => {
     if (err) {
       res.sendStatus(403);
