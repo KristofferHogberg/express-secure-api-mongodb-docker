@@ -4,10 +4,12 @@ WORKDIR /app
 
 COPY package.json /app
 
+COPY docker-compose.yml /app
+
 RUN npm install
 
-COPY . /app 
+COPY . /app
 
-CMD docker-compose build
+CMD docker-compose build; docker-compose up
 
 EXPOSE 3005
