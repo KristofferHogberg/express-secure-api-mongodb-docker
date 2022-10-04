@@ -7,7 +7,7 @@ const { verifyToken } = require("../middleware/middleware");
 router.use(bodyParser.urlencoded({ extended: false }));
 router.use(bodyParser.json());
 
-const Book = require('../models/bookModel');
+const Book = require("../models/bookModel");
 
 // Define create login-token endpoint
 router.post("/api/v1/login", (req, res) => {
@@ -77,6 +77,22 @@ router.post("/api/v1/createbook", verifyToken, async (req, res) => {
       book.save((err) => {
         res.json(book);
       });
+    }
+  });
+});
+
+router.post("/api/v1/watson", verifyToken, async (req, res) => {
+  jwt.verify(req.token, "secretKey", (err, authData) => {
+    if (err) {
+      res.sendStatus(403);
+    } else {
+      const test = {
+        title: "Bygg en Bastu av Fanta",
+        author: "Casey Affleck",
+        yearOfRelease: "2021",
+      };
+
+      res.json(test);
     }
   });
 });
