@@ -8,6 +8,6 @@ RUN npm install
 
 COPY . /app 
 
-CMD node server.js
+CMD docker-compose build
 
 EXPOSE 3005
